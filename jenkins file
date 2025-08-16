@@ -1,8 +1,8 @@
 pipeline {
     agent any
     tools {
-        maven 'Maven-3.8.5'
-        jdk 'Java-17'
+        maven 'maven-spring'
+        jdk 'jdk-spring'
     }
     environment {
         PROJECT_NAME = "E-commerce-project-springBoot"
