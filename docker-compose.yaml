@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  mysql-ecomm:
+    image: mysql:8.0
+    container_name: mysql-ecomm
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASS}
+      MYSQL_DATABASE: ecommjava
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  ecommjava:
+    build: ./jtproject   # path where Dockerfile is located
+    container_name: ecommjava
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
+      DB_URL: jdbc:mysql://mysql-ecomm:3306/ecommjava
+    depends_on:
+      - mysql-ecomm
+
+volumes:
+  mysql_data:
