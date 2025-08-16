@@ -9,13 +9,7 @@ pipeline {
         GITHUB_REPO_URL = "https://github.com/paayalkhandelwal01/E-commerce-project-springBoot.git"
     }
 
-    stages {
-        stage('Checkout') {
-            steps {
-                git url: "${GITHUB_REPO_URL}", branch: 'master2'
-            }
-        }
-        
+    stages {          
         stage('Build') {
             steps {
                 sh 'cd JtProject && mvn clean package'
