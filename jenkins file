@@ -1,6 +1,9 @@
 pipeline {
     agent any
-
+    tools {
+        maven 'Maven-3.8.5'
+        jdk 'Java-17'
+    }
     environment {
         PROJECT_NAME = "E-commerce-project-springBoot"
         GITHUB_REPO_URL = "https://github.com/paayalkhandelwal01/E-commerce-project-springBoot.git"
